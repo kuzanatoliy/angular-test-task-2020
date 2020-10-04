@@ -1,0 +1,27 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .app-main {
+    flex-grow: 1;
+  }
+
+  .app-header, .app-footer, .app-main {
+    max-width: 1366px;
+    margin: 0 calc((100% - 1366px) / 2);
+    padding: 0 1rem;
+  }
+
+  .app-header, .app-footer {
+    flex-basis: 3rem;
+  }
+
+  .app-header {
+    border-bottom: 1px solid black;
+  }
+
+  .app-footer {
+    border-top: 1px solid black;
+  }
+}

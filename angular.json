@@ -25,7 +25,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/api"
             ],
             "styles": [
               "src/styles.scss"
@@ -89,7 +90,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/api"
             ],
             "styles": [
               "src/styles.scss"
@@ -123,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-test-task2020"
+    }
+  },
+  "defaultProject": "angular-test-task2020",
+  "cli": {
+    "analytics": "ddd51388-9c53-49a2-a482-0fd83c849c85"
+  }
 }
