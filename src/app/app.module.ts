@@ -10,15 +10,16 @@ import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
-import { ProfileComponent } from './profile/pages/profile/profile.component';
+import { ProfileModule } from './profile/profile.module';
 
 import { AuthEffects } from './store/effects/auth.effects';
 import { reducer as authReducer } from './store/reducers/auth.reducers';
 
+import { TokenInterceptor } from './core/interceptors/token.interseptor';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    ProfileComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,13 +28,14 @@ import { reducer as authReducer } from './store/reducers/auth.reducers';
     StoreModule.forRoot({ authInfo: authReducer }),
     HttpClientModule,
     AuthModule,
-    SharedModule
+    SharedModule,
+    ProfileModule
   ],
-  providers: [/*{
+  providers: [{
     multi: true,
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
-  }*/],
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

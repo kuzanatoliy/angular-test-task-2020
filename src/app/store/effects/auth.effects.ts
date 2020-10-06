@@ -29,4 +29,12 @@ export class AuthEffects {
       catchError(() => of(authActions.logoutFailed()))
     ))
   ));
+
+  public getAuthInfo = createEffect(() => this.actions.pipe(
+    ofType(authActions.gettingAuthInfoStart),
+    switchMap(() => this.authService.logout().pipe(
+      map(user => authActions.gettingAuthInfoSuccess({ user })),
+      catchError(() => of(authActions.gettingAuthInfoFailed()))
+    ))
+  ));
 }

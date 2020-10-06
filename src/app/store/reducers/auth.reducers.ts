@@ -11,9 +11,9 @@ const inititalState: IAuthState = {
 const authenticationReducer = createReducer(
   inititalState,
   on(authActions.loginStart, state => ({
-      ...state,
-      error: false,
-      loading: true,
+    ...state,
+    error: false,
+    loading: true,
   })),
   on(authActions.loginSuccess, (state, { user }) => ({
     ...state,
@@ -33,13 +33,30 @@ const authenticationReducer = createReducer(
   on(authActions.logoutSuccess, state => ({
     ...state,
     loading: false,
-    token: null,
+    error: false,
     user: null
   })),
   on(authActions.logoutFailed, state => ({
     ...state,
     loading: false,
     error: true,
+  })),
+  on(authActions.gettingAuthInfoStart, state => ({
+    ...state,
+    loading: true,
+    error: false,
+    user: null,
+  })),
+  on(authActions.gettingAuthInfoSuccess, (state, { user }) => ({
+    ...state,
+    loading: false,
+    error: false,
+    user
+  })),
+  on(authActions.gettingAuthInfoFailed, state => ({
+    ...state,
+    loading: false,
+    error: true
   }))
 );
 

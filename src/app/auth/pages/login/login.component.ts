@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.authInfo = this.store.pipe(select('authInfo'));
     this.subscription = this.authInfo.subscribe((authInfo: IAuthState) => {
-      const { error, loading, user } = authInfo;
+      const { error, user } = authInfo;
       this.error = error;
-      if (user.userName) {
+      if (user && user.userName) {
         this.router.navigate(['profile']);
       }
     });

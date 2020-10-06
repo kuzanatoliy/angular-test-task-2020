@@ -7,7 +7,10 @@ export enum ActionTypes {
   loginFailed = '[Auth] login failed',
   logoutStart = '[Auth] logout start',
   logoutSuccess = '[Auth] logout success',
-  logoutFailed = '[Auth] logout failed'
+  logoutFailed = '[Auth] logout failed',
+  gettingAuthInfoStart = '[Auth] getting auth info start',
+  gettingAuthInfoSuccess = '[Auth] getting auth info success',
+  gettingAuthInfoFailed = '[Auth] getting auth info failed'
 }
 
 export const loginStart = createAction(
@@ -34,4 +37,17 @@ export const logoutSuccess = createAction(
 
 export const logoutFailed = createAction(
   ActionTypes.logoutFailed
+);
+
+export const gettingAuthInfoStart = createAction(
+  ActionTypes.gettingAuthInfoStart
+);
+
+export const gettingAuthInfoSuccess = createAction(
+  ActionTypes.gettingAuthInfoSuccess,
+  props<{ user: IUser }>()
+);
+
+export const gettingAuthInfoFailed = createAction(
+  ActionTypes.gettingAuthInfoFailed
 );

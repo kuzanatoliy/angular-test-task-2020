@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { IUser } from '../interfaces/IUser';
 
-import { LOGIN_URL, LOGOUT_URL } from '../constants/urls';
+import { LOGIN_URL, USER_INFO_URL, LOGOUT_URL } from '../constants/urls';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +22,11 @@ export class AuthService {
 
   public logout(): Observable<IUser> {
     return this.http.post(`${ LOGOUT_URL }`, {})
+      .pipe(map(this.prepareUserData));
+  }
+
+  public checkUserInfo(): Observable<IUser> {
+    return this.http.get(USER_INFO_URL)
       .pipe(map(this.prepareUserData));
   }
 
