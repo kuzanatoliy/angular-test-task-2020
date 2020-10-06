@@ -8,7 +8,7 @@ const inititalState: IAuthState = {
     loading: false,
 };
 
-const authenticationReducer = createReducer(
+const reducer = createReducer(
   inititalState,
   on(authActions.loginStart, state => ({
     ...state,
@@ -41,25 +41,25 @@ const authenticationReducer = createReducer(
     loading: false,
     error: true,
   })),
-  on(authActions.gettingAuthInfoStart, state => ({
+  on(authActions.getAuthInfoStart, state => ({
     ...state,
     loading: true,
     error: false,
     user: null,
   })),
-  on(authActions.gettingAuthInfoSuccess, (state, { user }) => ({
+  on(authActions.getAuthInfoSuccess, (state, { user }) => ({
     ...state,
     loading: false,
     error: false,
     user
   })),
-  on(authActions.gettingAuthInfoFailed, state => ({
+  on(authActions.getAuthInfoFailed, state => ({
     ...state,
     loading: false,
     error: true
   }))
 );
 
-export function reducer(state: IAuthState, action: Action): IAuthState {
-  return authenticationReducer(state, action);
+export function authReducer(state: IAuthState, action: Action): IAuthState {
+  return reducer(state, action);
 }

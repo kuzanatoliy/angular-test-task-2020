@@ -16,11 +16,12 @@ export class ProfileService {
   ) { }
 
   public getProfile(userId: string): Observable<IProfile> {
-    return this.http.get(`${ PROFILE_URL }/${userId}.json`)
+    return this.http.get(`${ PROFILE_URL }/${userId}`)
       .pipe(map(this.prepareProfileData));
   }
 
   private prepareProfileData(data: any): IProfile {
+    console.log(data);
     const {
       id,
       summary,

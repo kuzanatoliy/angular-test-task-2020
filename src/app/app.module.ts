@@ -12,8 +12,8 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 
-import { AuthEffects } from './store/effects/auth.effects';
-import { reducer as authReducer } from './store/reducers/auth.reducers';
+import { AuthEffects, ProfileEffects } from './store/effects';
+import { authReducer, profileReducer } from './store/reducers';
 
 import { TokenInterceptor } from './core/interceptors/token.interseptor';
 
@@ -24,8 +24,14 @@ import { TokenInterceptor } from './core/interceptors/token.interseptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    EffectsModule.forRoot([ AuthEffects ]),
-    StoreModule.forRoot({ authInfo: authReducer }),
+    EffectsModule.forRoot([
+      AuthEffects,
+      ProfileEffects
+    ]),
+    StoreModule.forRoot({
+      authInfo: authReducer,
+      profile: profileReducer
+    }),
     HttpClientModule,
     AuthModule,
     SharedModule,

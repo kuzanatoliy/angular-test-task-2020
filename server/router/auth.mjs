@@ -1,17 +1,13 @@
 import { USER_DATA } from '../configs';
+import express from 'express';
 
 import { authTreatment } from '../middlewares/authMiddlewares';
 
-export function setAuthRoutes(router) {
-  router.route('/auth/login')
-    .post(loginTreatment, userInfoTreatment);
+export const router = new express.Router();
 
-  router.route('/auth/user-info')
-    .get(authTreatment, userInfoTreatment);
-
-  router.route('/auth/logout')
-    .post(logoutTreatment, userInfoTreatment);
-}
+router.post('/auth/login', loginTreatment, userInfoTreatment);
+router.get('/auth/user-info', authTreatment, userInfoTreatment);
+router.post('/auth/logout', logoutTreatment, userInfoTreatment);
 
 export function userInfoTreatment(req, res) {
   res.json(req.session.userData || {});

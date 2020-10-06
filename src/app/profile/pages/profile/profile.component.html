@@ -1,27 +1,26 @@
-<div class="app-profile-page">
+<div *ngIf="!profile" class="app-profile-page">
   <div>
     <!-- img / -->
-    <h2>Welcome Anatoli Kuzmiankou</h2>
+    <h2>Welcome {{ profile.firstName }} {{ profile.lastName }}</h2>
   <div>
   <div>
     <h3>Summary</h3>
-    <p>Some summary...</p>
+    <p>{{ profile.summary }}</p>
   </div>
   <div>
     <h3>First name:</h3>
-    <p>Anatoli</p>
+    <p>{{ profile.firstName }}</p>
   </div>
   <div>
     <h3>Last name:</h3>
-    <p>Kuzmiankou</p>
+    <p>{{ profile.lastName }}</p>
   </div>
   <div>
     <h3>Email address</h3>
-    <p>Anatoli_Kuzmiankou@epam.com</p>
+    <p>{{ profile.emailAddress }}</p>
   </div>
   <div>
     <h3>Phone number</h3>
-    <p>+375(29)8526443</p>
+    <p>{{ profile.phoneNumber }}</p>
   </div>
 </div>
-  

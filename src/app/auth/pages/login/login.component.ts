@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
+import { TokenService } from 'src/app/core/services/token.service';
+
 import { loginStart } from 'src/app/store/actions/auth.actions';
 import { IAuthState } from 'src/app/store/interfaces/IAuthState';
 
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private store: Store<{ authInfo: IAuthState }>,
+    private tokenService: TokenService
   ) { }
 
   public loginHandler(): void {
@@ -38,7 +41,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       const { error, user } = authInfo;
       this.error = error;
       if (user && user.userName) {
-        this.router.navigate(['profile']);
+        this.tokenService.setToken(user.token);
+        this.router.navigate([`profile/${ user.id }`]);
       }
     });
   }

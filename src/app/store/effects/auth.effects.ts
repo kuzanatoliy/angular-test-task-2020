@@ -31,10 +31,10 @@ export class AuthEffects {
   ));
 
   public getAuthInfo = createEffect(() => this.actions.pipe(
-    ofType(authActions.gettingAuthInfoStart),
-    switchMap(() => this.authService.logout().pipe(
-      map(user => authActions.gettingAuthInfoSuccess({ user })),
-      catchError(() => of(authActions.gettingAuthInfoFailed()))
+    ofType(authActions.getAuthInfoStart),
+    switchMap(() => this.authService.checkUserInfo().pipe(
+      map(user => authActions.getAuthInfoSuccess({ user })),
+      catchError(() => of(authActions.getAuthInfoFailed()))
     ))
   ));
 }

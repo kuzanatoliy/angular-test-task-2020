@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { gettingAuthInfoStart } from 'src/app/store/actions/auth.actions';
+import { getAuthInfoStart } from 'src/app/store/actions/auth.actions';
 import { IAuthState } from 'src/app/store/interfaces/IAuthState';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
     private store: Store<{ authInfo: IAuthState }>,
   ) {
     this.userInfo$ = this.store.pipe(select('authInfo'));
-    this.store.dispatch(gettingAuthInfoStart());
+    this.store.dispatch(getAuthInfoStart());
   }
 
   public canActivate(): Observable<boolean> | Promise<boolean> | boolean {
