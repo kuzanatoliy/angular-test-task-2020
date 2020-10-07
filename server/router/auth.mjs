@@ -10,14 +10,14 @@ router.get('/auth/user-info', authTreatment, userInfoTreatment);
 router.post('/auth/logout', logoutTreatment, userInfoTreatment);
 
 export function userInfoTreatment(req, res) {
-  res.json(req.session.userData || {});
+  res.json(req.app.locals.userData || {});
 }
 
 export function loginTreatment(req, res, next) {
   const { userName, password } = req.body;
   if (USER_DATA.userName === userName && USER_DATA.password === password) {
     const { id, userName } = USER_DATA;
-    req.session.userData = {
+    req.app.locals.userData = {
       id,
       token: userName,
       userName,

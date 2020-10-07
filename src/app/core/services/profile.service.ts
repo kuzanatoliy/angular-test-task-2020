@@ -21,7 +21,6 @@ export class ProfileService {
   }
 
   private prepareProfileData(data: any): IProfile {
-    console.log(data);
     const {
       id,
       summary,

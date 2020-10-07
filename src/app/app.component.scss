@@ -1,27 +1,26 @@
 .app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
 
-  .app-main {
+  .app__main {
     flex-grow: 1;
   }
 
-  .app-header, .app-footer, .app-main {
+  .app__header, .app__footer, .app__main {
     max-width: 1366px;
-    margin: 0 calc((100% - 1366px) / 2);
-    padding: 0 1rem;
+    padding: 0 calc((100% - 1366px) / 2);
   }
 
-  .app-header, .app-footer {
-    flex-basis: 3rem;
+  .app__header, .app__footer {
+    height: 3rem;
   }
 
-  .app-header {
+  .app__header {
     border-bottom: 1px solid black;
   }
 
-  .app-footer {
+  .app__footer {
     border-top: 1px solid black;
   }
 }

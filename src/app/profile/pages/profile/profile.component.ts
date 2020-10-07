@@ -29,7 +29,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.store.dispatch(getProfileStart({ id }));
       this.profileState = this.store.pipe(select('profile'));
       this.subscription = this.profileState.subscribe((state: IProfileState) => {
-        console.log(state);
         const { profile } = state;
         this.profile = profile;
       });

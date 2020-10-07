@@ -11,18 +11,18 @@ import { IAuthState } from 'src/app/store/interfaces/IAuthState';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  private userInfo$: Observable<IAuthState>;
+  private userInfo: Observable<IAuthState>;
 
   constructor(
     private router: Router,
     private store: Store<{ authInfo: IAuthState }>,
   ) {
-    this.userInfo$ = this.store.pipe(select('authInfo'));
+    this.userInfo = this.store.pipe(select('authInfo'));
     this.store.dispatch(getAuthInfoStart());
   }
 
   public canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    return this.userInfo$.pipe(map((state: IAuthState) => {
+    return this.userInfo.pipe(map((state: IAuthState) => {
       const isAuth = !!(state.user && state.user.userName);
 
       if (!isAuth) {

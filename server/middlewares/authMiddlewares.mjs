@@ -7,7 +7,6 @@ export function setAuthMiddlewares(router) {
 export function authTreatment(req, res, next) {
   const { token } = req.headers;
   if (token && token === USER_DATA.userName) {
-    req.session.userData = USER_DATA;
     return next();
   }
 
