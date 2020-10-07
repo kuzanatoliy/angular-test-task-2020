@@ -6,7 +6,7 @@ import { ProfileComponent } from './profile/pages/profile/profile.component';
 
 import { AuthGuard, AuthLoginGuard } from './core/guards';
 
-export const homeRoute: Route = { path: '', redirectTo: 'profile', pathMatch: 'full' };
+export const homeRoute: Route = { path: '', redirectTo: 'login', pathMatch: 'full' };
 export const profileRoute: Route = { path: 'profile/:id', component: ProfileComponent, canActivate: [ AuthGuard ] };
 export const loginRoute: Route = { path: 'login', component: LoginComponent, canActivate: [ AuthLoginGuard ] };
 
