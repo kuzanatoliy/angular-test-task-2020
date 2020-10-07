@@ -1,14 +1,17 @@
 <div class="app-login-page">
-  <form [formGroup]="authData" class="app-login-page-form">
-    <label class="app-login-page-form-user-name">
-      Username: <input type="text" formControlName="userName"/>
+  <form [formGroup]="authData" class="app-login-page__form">
+    <h2>Log in</h2>
+    <label class="app-login-page__form__user-name">
+      <h3>Username:</h3>
+      <input type="text" formControlName="userName"/>
     </label>
-    <label class="app-login-page-form-password">
-      Password: <input type="password" formControlName="password"/>
+    <label class="app-login-page__form__password">
+      <h3>Password:</h3>
+      <input type="password" formControlName="password"/>
     </label>
-    <div *ngIf="error; then errorBlock" class="login-form-error"></div>
+    <div *ngIf="error; then errorBlock" class="app-login-page__form__error"></div>
     <ng-template #errorBlock>User not found!</ng-template>
-    <div class="app-login-page-form-control">
+    <div class="app-login-page__form__button">
       <button (click)="loginHandler()" [disabled]="authData.invalid">Login</button>
     </div>
   </form>
