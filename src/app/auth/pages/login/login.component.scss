@@ -1,13 +1,12 @@
+@import '../../../styles/mixins';
+
 .app-login-page {
   display: flex;
   justify-content: center;
   align-items: center;
   
   &__form {
-    box-shadow: 0px 0px 3px 0px;
-    padding: 2rem;
-    margin: 2rem;
-    border: 1px solid gray;
+    @include card();
 
     h2 {
       margin: 0;
@@ -19,24 +18,15 @@
     }
 
     input {
-      outline: none;
       width: 250px;
-      border: 0;
-      border-bottom: 1px solid black;
-    }
-
-    input:focus {
-      border: 0;
-      border-bottom: 1px solid #007ac3;
+      
+      @include customInput();
     }
 
     button {
-      margin-top: 2rem;
-      height: 2rem;
       width: 100%;
-      background-color: #007ac3;
-      border: 0;
-      color: white;
+
+      @include customButtom();
     }
   }
 }
