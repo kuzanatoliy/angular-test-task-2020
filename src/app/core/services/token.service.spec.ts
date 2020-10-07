@@ -2,15 +2,13 @@ import { TestBed } from '@angular/core/testing';
 
 import { TokenService } from './token.service';
 
-import { ListenerCallback } from 'src/app/interfaces/IListenable';
-
 describe('TokenService', () => {
   let service: TokenService;
 
   beforeEach(() => TestBed.configureTestingModule({}));
 
   beforeEach(() => {
-    service = TestBed.get(TokenService);
+    service = TestBed.inject(TokenService);
   });
 
   afterEach(() => {
@@ -23,26 +21,9 @@ describe('TokenService', () => {
 
   it('should check get/set token', () => {
     const token = 'Some Token';
-    expect(service.token).not.toBe(token);
-    service.token = token;
-    expect(service.token).toBe(token);
+    expect(service.getToken()).not.toBe(token);
+    service.setToken(token);
+    expect(service.getToken()).toBe(token);
   });
 
-  it('should check subscribe/unsubscribe functionality', () => {
-    let someValue: string;
-
-    const callback: ListenerCallback = (val: string) => {
-      someValue = val;
-    };
-
-    const firstToken = 'First token';
-    service.subscribe(callback);
-    service.token = firstToken;
-    expect(someValue).toBe(firstToken);
-
-    const secondToken = 'Second token';
-    service.unsubscribe(callback);
-    service.token = secondToken;
-    expect(someValue).not.toBe(secondToken);
-  });
 });
